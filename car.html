@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objects Cars</title>
+</head>
+
+<body>
+    <h1>Car Adventures!</h1>
+    <h2>Type "h" to honk, "d" to drive to work, "w" to drive around the world, or "t" to get a tuneup.</h2>
+    <h2>See console for car stats.</h2>
+
+    <script type="text/javascript">
+
+
+        var car = {
+            //  properties for the object
+            make: "Infinity",
+            model: "Qx4",
+            color: "Black",
+            mileage: 205000,
+            isWorking: true,
+
+            // method for the object (method is function associated with object)
+            honk: function () {
+                alert("HOOOONK!!!");
+            },
+            driveToWork: function () {
+                alert("Previous Mileage: " + car.mileage);
+                car.mileage = car.mileage + 15;
+                alert("Updated Mileage: " + car.mileage);
+            },
+            driveAroundWorld: function () {
+                alert("Previous Mileage: " + car.mileage);
+
+                car.mileage = car.mileage + 8000;
+
+                alert("Updated Mileage: " + car.mileage);
+                alert("Car needs a tuneup!")
+
+                car.isWorking = false;
+
+            },
+            getTuneup: function () {
+                alert("Car is ready to go!");
+                car.isWorking = true;
+            }
+
+        }
+
+        function carStats() {
+            console.log("Make " + car.make);
+            console.log("Model " + car.model);
+            console.log("Color " + car.color);
+            console.log("Mileage " + car.mileage);
+            console.log("Is Working " + car.isWorking);
+            console.log("________________________________________________");
+        };
+
+
+        document.onkeyup = function (event) {
+            var keyInput = String.fromCharCode(event.keyCode).toLocaleLowerCase();
+            
+            if (keyInput=='h') {
+                car.honk();
+                carStats();
+            }
+            if (keyInput=='d') {
+                car.driveToWork();
+                carStats();
+            }
+            if (keyInput=='w') {
+                car.driveAroundWorld();
+                carStats();
+            }
+            if (keyInput=='t') {
+                car.getTuneup();
+                carStats();
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
